@@ -42,11 +42,19 @@ export const heroCtas: Record<Locale, HeroCtas> = {
       label: "UbuCon Asia 2026 @ COSCUP",
       href: "https://2026.ubucon.asia",
     },
+    {
+      label: "2027 Bid Information",
+      href: "https://discourse.ubuntu.com/t/ubucon-asia-2027-call-for-bids/76657",
+    },
   ],
   "zh-tw": [
     {
       label: "UbuCon Asia 2026 @ COSCUP",
       href: "https://2026.ubucon.asia",
+    },
+    {
+      label: "2027 Bid Information",
+      href: "https://discourse.ubuntu.com/t/ubucon-asia-2027-call-for-bids/76657",
     },
   ],
 } as const;
