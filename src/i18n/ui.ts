@@ -9,7 +9,7 @@ export const ui = {
     ctaPrimary: "Get updates",
     ctaSecondary: "Call for proposals",
     navHome: "Home",
-    navCfp: "CFP",
+    navEvents: "Events",
     navSponsorship: "Sponsorship",
     navTravel: "Travel",
     navUpdates: "Updates",
@@ -28,7 +28,7 @@ export const ui = {
     ctaPrimary: "接收更新",
     ctaSecondary: "徵稿",
     navHome: "首頁",
-    navCfp: "CFP",
+    navEvents: "Events",
     navSponsorship: "贊助",
     navTravel: "旅遊資訊",
     navUpdates: "最新消息",
@@ -66,7 +66,7 @@ export type UiKey =
   | "ctaPrimaryNotice"
   | "ctaSecondaryNotice"
   | "sponsorshipNotice"
-  | "travelNotice";
+  | "navEvents";
 
 export const getLocaleFromUrl = (url: URL): Locale => {
   const pathLocale = url.pathname.split("/")[1];

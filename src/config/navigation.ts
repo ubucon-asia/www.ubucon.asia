@@ -22,14 +22,9 @@ export type NavigationSettings = {
 export const navigation: NavigationSettings = {
   primary: [
     {
-      key: "navProgram",
-      items: [
-        {
-          key: "navCfp",
-          path: "/cfp",
-          hash: "#cfp",
-        },
-      ],
+      key: "navEvents",
+      path: "/events",
+      hash: "#events",
     },
   ],
   secondary: [],
