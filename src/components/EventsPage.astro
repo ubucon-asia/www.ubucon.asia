@@ -1,0 +1,69 @@
+---
+import Navigation from "./Navigation.astro";
+import { getEventData } from "../config/eventsData";
+import { getLocalizedPath, useTranslations } from "../i18n/ui";
+const { locale } = Astro.props;
+const t = useTranslations(locale) as (key: string) => string;
+const eventData = getEventData(locale);
+---
+
+<main>
+    <Navigation locale={locale} />
+
+    <section class="p-section--hero p-strip is-dark">
+        <div class="p-section" id="4-columns-responsive">
+            <div class="p-section--shallow">
+                <div class="grid-row--50-50-on-large">
+                    <div class="grid-col">
+                        <h2>Upcoming & Past editions</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-row">
+                <div class="grid-col-8">
+                    <div class="p-equal-height-row--wrap">
+                        {
+                            eventData.map((event, index) => (
+                                <div class="p-equal-height-row__col is-borderless">
+                                    <div class="p-equal-height-row__item">
+                                        <div class="p-image-container p-image-container--2-3-on-small p-image-container--2-3-on-medium p-image-container--2-3-on-large is-highlighted">
+                                            <img
+                                                src={event.logoSrc}
+                                                class="p-image-container__image"
+                                                width="284"
+                                                height="426"
+                                                alt={event.title}
+                                            />
+                                        </div>
+                                        <hr class="p-rule--highlight" />
+                                    </div>
+                                    <div class="p-equal-height-row__item">
+                                        <p class="p-heading--4">
+                                            {event.title}
+                                        </p>
+                                    </div>
+                                    <div class="p-equal-height-row__item">
+                                        <p>
+                                            {event.venue}
+                                            <br />
+                                            {event.location}
+                                        </p>
+                                        <p>{event.date}</p>
+                                    </div>
+                                    <div class="p-equal-height-row__item">
+                                        <p>
+                                            <a href={event.url}>
+                                                {t("visitWebsite")}&nbsp;›
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,96 @@
+---
+import * as site from "../config/site";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+    locale: Locale;
+}
+
+type FooterLogo = {
+    alt: string;
+    src: string;
+    href?: string;
+    maxHeight?: number;
+    paddingTop?: number;
+};
+
+type FooterLink = {
+    label: string;
+    href: string;
+};
+
+type FooterContent = {
+    legalHtml: string;
+    links: FooterLink[];
+    logos: FooterLogo[];
+    backToTopLabel: string;
+};
+
+const { locale } = Astro.props as Props;
+const { getFooterContent } = site as unknown as {
+    getFooterContent: (locale?: Locale) => FooterContent;
+};
+const footer = getFooterContent(locale);
+const logoStyle = (logo: FooterLogo) => {
+    const maxHeight = logo.maxHeight ?? 60;
+    const paddingTop = logo.paddingTop ?? 10;
+    return `max-height:${maxHeight}px;padding-top:${paddingTop}px`;
+};
+---
+
+<footer class="l-footer--sticky p-strip--dark">
+    {
+        footer.logos.length ? (
+            <div class="u-fixed-width">
+                <div class="p-logo-section--dense">
+                    <div class="p-logo-section__items">
+                        {footer.logos.map((logo: FooterLogo) => (
+                            <div class="p-logo-section__item">
+                                {logo.href ? (
+                                    <a href={logo.href}>
+                                        <img
+                                            class="p-logo-section__logo"
+                                            src={logo.src}
+                                            alt={logo.alt}
+                                            loading="lazy"
+                                            style={logoStyle(logo)}
+                                        />
+                                    </a>
+                                ) : (
+                                    <img
+                                        class="p-logo-section__logo"
+                                        src={logo.src}
+                                        alt={logo.alt}
+                                        loading="lazy"
+                                        style={logoStyle(logo)}
+                                    />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        ) : null
+    }
+    <nav class="row" aria-label="Footer">
+        <div class="has-cookie">
+            <p set:html={footer.legalHtml}></p>
+            {
+                footer.links.length ? (
+                    <ul class="p-inline-list--middot">
+                        {footer.links.map((link: FooterLink) => (
+                            <li class="p-inline-list__item">
+                                <a href={link.href}>
+                                    <small>{link.label}</small>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                ) : null
+            }
+            <span class="u-off-screen">
+                <a href="#">{footer.backToTopLabel}</a>
+            </span>
+        </div>
+    </nav>
+</footer>

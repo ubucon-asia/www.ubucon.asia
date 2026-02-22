@@ -1,0 +1,30 @@
+---
+import "../styles/vanilla.scss";
+import { getSiteMetadata } from "../config/site";
+import Footer from "../components/Footer.astro";
+import { defaultLocale } from "../i18n/ui";
+import type { Locale } from "../i18n/ui";
+
+const { title, description, lang } = Astro.props;
+const locale = (lang ?? defaultLocale) as Locale;
+const metadata = getSiteMetadata(locale);
+const pageTitle = title ?? metadata.title;
+const pageDescription = description ?? metadata.description;
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={pageDescription} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<slot />
+		<Footer locale={locale} />
+	</body>
+</html>
