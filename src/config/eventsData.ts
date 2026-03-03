@@ -1,6 +1,7 @@
 import { defaultLocale } from "../i18n/ui";
 import type { Locale } from "../i18n/ui";
 import UCACommitteeLogo from "../assets/committee-logo.svg";
+import UCA26Logo from "../assets/ucalogo/uca26.svg";
 import UCA25Logo from "../assets/ucalogo/uca25.svg";
 import UCA24Logo from "../assets/ucalogo/uca24.svg";
 import UCA23Logo from "../assets/ucalogo/uca23.svg";
@@ -22,7 +23,7 @@ export const eventData: Record<Locale, Array<EventData>> = {
       date: "August 8-9, 2026",
       venue: "NTUST",
       location: "Taipei, Taiwan",
-      logoSrc: UCACommitteeLogo.src,
+      logoSrc: UCA26Logo.src,
       url: "https://2026.ubucon.asia",
     },
     {
