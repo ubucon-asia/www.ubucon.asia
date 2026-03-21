@@ -28,7 +28,7 @@ export const eventData: Record<Locale, Array<EventData>> = {
     },
     {
       title: "UbuCon Asia 2025",
-      date: "August 30-31, 2024",
+      date: "August 30-31, 2025",
       venue: "St. Xavier’s College",
       location: "Kathmandu, Nepal",
       logoSrc: UCA25Logo.src,
